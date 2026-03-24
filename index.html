@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ferraz · Fichas Técnicas</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Nunito+Sans:wght@300;400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg:#eef0f4;--surface:#fff;--surface2:#f8f9fb;--border:#e1e5ec;--border2:#cdd3de;
+  --ink:#0d1521;--ink-60:#3c4e65;--ink-40:#647a94;--ink-20:#9aafc5;--ink-10:#c6d2e0;
+  --blue:#1a47b8;--blue-lt:#3a72f5;--blue-bg:#edf2ff;--blue-bd:#b8ccf8;
+  --teal:#097062;--teal-lt:#0fa086;--teal-bg:#e8faf6;--teal-bd:#8ed8cc;
+  --f-serif:'Libre Baskerville',Georgia,serif;
+  --f-sans:'Nunito Sans',system-ui,sans-serif;
+  --f-mono:'IBM Plex Mono',monospace;
+  --sh-xs:0 1px 2px rgba(13,21,33,.06);
+  --sh-sm:0 2px 8px rgba(13,21,33,.09);
+  --sh-md:0 8px 28px rgba(13,21,33,.13);
+  --sh-lg:0 16px 48px rgba(13,21,33,.16);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{min-height:100%;overflow-y:scroll}
+body{font-family:var(--f-sans);background:var(--bg);color:var(--ink);min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+
+/* ═══ TOPBAR ═══ */
+.topbar{height:54px;flex-shrink:0;background:var(--ink);display:flex;align-items:center;padding:0 24px;position:relative;z-index:200}
+.topbar::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue-lt),var(--teal-lt) 50%,transparent)}
+.tb-brand{display:flex;align-items:center;gap:10px}
+.tb-mark{width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,var(--blue-lt),var(--blue));display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 2px 8px rgba(58,114,245,.4)}
+.tb-mark svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tb-name{font-weight:700;font-size:.88rem;color:#fff;letter-spacing:.3px}
+.tb-name em{font-style:normal;color:#7aa7ff}
+.tb-right{margin-left:auto}
+.tb-badge{display:flex;align-items:center;gap:5px;padding:4px 11px;border-radius:20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);font-family:var(--f-mono);font-size:.56rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.tb-badge .dot{width:6px;height:6px;border-radius:50%;background:#34d399;box-shadow:0 0 0 2px rgba(52,211,153,.2);animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* ═══ HERO ═══ */
+.hero{background:var(--ink);padding:52px 40px 56px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 110%,rgba(58,114,245,.18),transparent)}
+.hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue-lt),var(--teal-lt) 50%,transparent)}
+.hero-eyebrow{font-family:var(--f-mono);font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:14px}
+.hero-title{font-family:var(--f-serif);font-size:2.1rem;font-weight:700;color:#fff;letter-spacing:-.4px;line-height:1.2;margin-bottom:12px}
+.hero-title em{font-style:normal;color:#7aa7ff}
+.hero-sub{font-size:.85rem;color:rgba(255,255,255,.45);max-width:420px;margin:0 auto;line-height:1.75}
+
+/* ═══ MAIN ═══ */
+.main{flex:1;display:flex;flex-direction:column;align-items:center;padding:48px 24px 64px}
+.section-label{font-family:var(--f-mono);font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--ink-20);margin-bottom:28px;text-align:center}
+
+/* ═══ CARDS GRID ═══ */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,340px));gap:20px;justify-content:center;width:100%;max-width:760px}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:var(--sh-sm);transition:transform .22s cubic-bezier(.16,1,.3,1),box-shadow .22s;cursor:pointer;text-decoration:none;color:inherit;display:flex;flex-direction:column;position:relative}
+.card:hover{transform:translateY(-4px);box-shadow:var(--sh-lg)}
+.card:active{transform:translateY(-1px)}
+
+.card-accent{height:4px;width:100%}
+.card.blue .card-accent{background:linear-gradient(90deg,var(--blue),var(--blue-lt))}
+.card.teal .card-accent{background:linear-gradient(90deg,var(--teal),var(--teal-lt))}
+
+.card-body{padding:26px 24px 20px;flex:1;display:flex;flex-direction:column;gap:12px}
+
+.card-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:4px}
+.card.blue .card-icon{background:var(--blue-bg);border:1px solid var(--blue-bd)}
+.card.teal .card-icon{background:var(--teal-bg);border:1px solid var(--teal-bd)}
+.card-icon svg{width:22px;height:22px;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.card.blue .card-icon svg{stroke:var(--blue)}
+.card.teal .card-icon svg{stroke:var(--teal)}
+
+.card-tag{font-family:var(--f-mono);font-size:.54rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:2px}
+.card.blue .card-tag{color:var(--blue)}
+.card.teal .card-tag{color:var(--teal)}
+
+.card-title{font-family:var(--f-serif);font-size:1.2rem;font-weight:700;color:var(--ink);line-height:1.3;letter-spacing:-.2px}
+.card-desc{font-size:.76rem;color:var(--ink-40);line-height:1.7;flex:1}
+
+.card-fields{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.field-chip{font-family:var(--f-mono);font-size:.52rem;padding:3px 8px;border-radius:20px;letter-spacing:.5px;border:1px solid}
+.card.blue .field-chip{background:var(--blue-bg);border-color:var(--blue-bd);color:var(--blue)}
+.card.teal .field-chip{background:var(--teal-bg);border-color:var(--teal-bd);color:var(--teal)}
+
+.card-footer{padding:14px 24px;border-top:1px solid var(--border);background:var(--surface2);display:flex;align-items:center;justify-content:space-between}
+.card-footer-label{font-family:var(--f-mono);font-size:.58rem;letter-spacing:1px;text-transform:uppercase}
+.card.blue .card-footer-label{color:var(--blue)}
+.card.teal .card-footer-label{color:var(--teal)}
+.card-arrow{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;transition:transform .18s}
+.card.blue .card-arrow{background:var(--blue-bg);border:1px solid var(--blue-bd)}
+.card.teal .card-arrow{background:var(--teal-bg);border:1px solid var(--teal-bd)}
+.card-arrow svg{width:13px;height:13px;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.card.blue .card-arrow svg{stroke:var(--blue)}
+.card.teal .card-arrow svg{stroke:var(--teal)}
+.card:hover .card-arrow{transform:translateX(3px)}
+
+/* ═══ FOOTER ═══ */
+.footer{background:var(--surface);border-top:1px solid var(--border);padding:10px 24px;display:flex;align-items:center;flex-shrink:0}
+.ft-l{font-family:var(--f-mono);font-size:.52rem;color:var(--ink-10);letter-spacing:1px}
+.ft-r{margin-left:auto;display:flex;gap:16px}
+.ft-i{font-family:var(--f-mono);font-size:.52rem;color:var(--ink-10);display:flex;align-items:center;gap:4px}
+.ft-i span{color:var(--blue)}
+
+@media(max-width:480px){.hero{padding:36px 20px 40px}.hero-title{font-size:1.6rem}.cards{grid-template-columns:1fr}.main{padding:32px 16px 48px}}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="tb-brand">
+    <div class="tb-mark">
+      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    </div>
+    <div class="tb-name">Ferraz<em>Scan</em></div>
+  </div>
+  <div class="tb-right">
+    <div class="tb-badge"><span class="dot"></span>Sistema Ativo</div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Ferraz · Extrator de Fichas Técnicas</div>
+  <div class="hero-title">Selecione o <em>Equipamento</em></div>
+  <div class="hero-sub">Escolha o tipo de equipamento para extrair ou preencher a ficha técnica</div>
+</section>
+
+<!-- MAIN -->
+<main class="main">
+  <div class="section-label">Equipamentos disponíveis</div>
+
+  <div class="cards">
+
+    <!-- ELEVADOR -->
+    <a class="card blue" href="elevador.html">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="6" x2="12" y2="18"/><polyline points="8 10 12 6 16 10"/><polyline points="8 14 12 18 16 14"/></svg>
+        </div>
+        <div class="card-tag">Elevador</div>
+        <div class="card-title">Elevador de Canecas</div>
+        <div class="card-desc">Extração automática de dados técnicos via PDF ou preenchimento manual da ficha de elevador de canecas.</div>
+        <div class="card-fields">
+          <span class="field-chip">Modelo</span>
+          <span class="field-chip">Motor</span>
+          <span class="field-chip">Potência</span>
+          <span class="field-chip">Redutor</span>
+          <span class="field-chip">RPM</span>
+          <span class="field-chip">Rolamento</span>
+          <span class="field-chip">Mancal</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="card-footer-label">Abrir Ficha</div>
+        <div class="card-arrow">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+    </a>
+
+    <!-- ROSCA -->
+    <a class="card teal" href="rosca.html">
+      <div class="card-accent"></div>
+      <div class="card-body">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><path d="M3 6c0 0 2 2 4.5 2S12 6 12 6s2 2 4.5 2S21 6 21 6"/><path d="M3 18c0 0 2-2 4.5-2S12 18 12 18s2-2 4.5-2S21 18 21 18"/></svg>
+        </div>
+        <div class="card-tag">Rosca</div>
+        <div class="card-title">Rosca Transportadora</div>
+        <div class="card-desc">Extração automática de dados técnicos via PDF ou preenchimento manual da ficha de rosca transportadora.</div>
+        <div class="card-fields">
+          <span class="field-chip">Comprimento</span>
+          <span class="field-chip">Diâmetro</span>
+          <span class="field-chip">Tubo</span>
+          <span class="field-chip">Passo</span>
+          <span class="field-chip">Mancal</span>
+          <span class="field-chip">Potência</span>
+          <span class="field-chip">RPM</span>
+        </div>
+      </div>
+      <div class="card-footer">
+        <div class="card-footer-label">Abrir Ficha</div>
+        <div class="card-arrow">
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="ft-l">FERRAZSCAN · SISTEMA DE FICHAS TÉCNICAS · v1.0</div>
+  <div class="ft-r">
+    <div class="ft-i">MODO · <span>Offline</span></div>
+  </div>
+</footer>
+
+</body>
+</html>
